@@ -1,0 +1,88 @@
+main.py
+------------
+# This is a sample Python script.
+
+# Press Shift+F10 to execute it or replace it with your code.
+# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+
+
+def print_hi(name):
+    # Use a breakpoint in the code line below to debug your script.
+    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+
+
+# Press the green button in the gutter to run the script.
+if __name__ == '__main__':
+    print_hi('PyCharm')
+
+# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+----------------------------------------------------
+Purna.py(my python file)
+------------------------
+from flask import Flask, request, render_template
+app=Flask(__name__)
+
+@app.route('/')
+def hello():
+    return render_template("login.html")
+database={"Likitha":"likki","Lakshmi":"lucky"}
+@app.route('/form_login',methods=["Post","GET"])
+def login():
+    name=request.form["Username"]
+    Pwd=request.form["password"]
+
+    if name not in database:
+        return render_template('login.html', info='Invalid User')
+    else:
+        if database[name]!= Pwd:
+            return render_template('login.html', info='Invalid Password')
+        else:
+            return render_template('resume.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+------------------------------------------------
+Login.html
+------------
+<!Doctype html>
+<html lang="en">
+<head>
+
+
+<meta charset="UTF-8">
+    <title>Login page</title>
+</head>
+<body bgcolor="black">
+<form action="form_login" method="post">
+    <h2><mark>enter your details here</mark></h2>Username<br>
+    <input type="text" name="Username"><br>
+    <mark>password:</mark><br>
+    <input type="text" name="password"><br>
+    <input type="submit" value="Login">
+</form>
+<h1>{{ info }}</h1>
+</body>
+</html>
+---------------------------------
+Resume.html
+----------
+<!Doctype html>
+<html lang="en">
+<head>
+
+
+<meta charset="UTF-8">
+    <title>Login page</title>
+</head>
+<body bgcolor="black">
+<form action="form_login" method="post">
+    <h2><mark>enter your details here</mark></h2>Username<br>
+    <input type="text" name="Username"><br>
+    <mark>password:</mark><br>
+    <input type="text" name="password"><br>
+    <input type="submit" value="Login">
+</form>
+<h1>{{ info }}</h1>
+</body>
+</html>
